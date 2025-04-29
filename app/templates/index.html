@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Google Fonts (Tajawal for Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Favicon (optional) -->
+    <!-- <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}"> -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ app_name }}</h1>
+            <p class="subtitle">رفع الملفات بكل سهولة وأمان</p>
+        </header>
+        
+        <main>
+            <!-- Initial Upload Area -->
+            <div class="upload-container" id="upload-area">
+                <div class="upload-icon">
+                    <!-- SVG Upload Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path d="M12 12.586l4.243 4.242-1.415 1.415L13 16.415V22h-2v-5.587l-1.828 1.83-1.415-1.415L12 12.586zM12 2a7.001 7.001 0 0 1 6.954 6.194 5.5 5.5 0 0 1-.953 10.784v-2.014a3.5 3.5 0 1 0-1.112-6.91 5 5 0 1 0-9.777 0 3.5 3.5 0 0 0-1.292 6.88l.19.031v2.014a5.5 5.5 0 0 1-.954-10.784A7 7 0 0 1 12 2z" fill="currentColor"/>
+                    </svg>
+                </div>
+                
+                <p class="drag-text">اسحب وأفلت الملف هنا أو انقر للاختيار</p>
+                <p class="or-text">أو</p>
+                
+                <label for="file-upload" class="custom-button">
+                    اختر ملفاً
+                </label>
+                <!-- Hidden file input, triggered by label -->
+                <input type="file" id="file-upload" hidden>
+                
+                <p class="file-info" id="file-info"></p> <!-- Shows selected file name -->
+            </div>
+            
+            <!-- Progress Bar Area (Hidden initially) -->
+            <div class="progress-container" id="progress-container" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <p class="progress-text" id="progress-text">0%</p>
+            </div>
+            
+            <!-- Result Area (Hidden initially) -->
+            <div class="result-container" id="result-container" style="display: none;">
+                <div class="success-icon">
+                    <!-- SVG Success Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p class="success-text">تم رفع الملف بنجاح!</p>
+                <div class="link-container">
+                    <input type="text" id="download-link" readonly aria-label="رابط التنزيل">
+                    <button id="copy-button" type="button">نسخ</button>
+                </div>
+                <button class="custom-button" id="upload-another" type="button">رفع ملف آخر</button>
+            </div>
+        </main>
+        
+        <!-- Toast Notification Area -->
+        <div class="toast" id="toast" role="alert" aria-live="assertive">
+            <p id="toast-message"></p>
+        </div>
+        
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; {{ app_name }} 2025</p>
+        </footer>
+    </div>
+    
+    <!-- Link JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

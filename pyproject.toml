@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "arabic-file-uploader"
+version = "0.1.0"
+description = "Arabic RTL file upload application with DDownload API integration"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+# Add this line to tell Poetry where the package source is
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.0"
+python-dotenv = "^1.0.0"
+requests = "^2.31.0"
+aiohttp = "^3.9.1"
+pydantic = "^2.5.2" # Keeping v2 as specified
+gunicorn = "^21.2.0"
+loguru = "^0.7.2"
+gevent = "^23.9.1" # Adding gevent for the worker
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
